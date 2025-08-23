@@ -1,0 +1,22 @@
+*{
+    background-color: #0d1b2a;
+    font-family:sans-serif;
+}
+
+svg{
+    background: transparent;
+}
+
+.nav-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nav-text {
+    position: absolute;
+    white-space: nowrap;
+    font-weight: 500;
+    pointer-events: none;
+  }
