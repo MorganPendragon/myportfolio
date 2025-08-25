@@ -29,6 +29,16 @@ export default function App() {
     visible: { x: 250, opacity: 1 }
   };
 
+    const fadeleft = {
+    hidden: { x: -500, opacity: 0 },
+    visible: { x: 0, opacity: 1 }
+  };
+
+  const faderight = {
+    hidden: { x: 500, opacity: 0 },
+    visible: { x: 0, opacity: 1 }
+  };
+
   const fadeUp = {
     hidden: { y: 50, opacity: 0 },
     visible: { y: 0, opacity: 1 }
@@ -159,7 +169,7 @@ export default function App() {
       {/* EXPERIENCE */}
       <section
         ref={experienceRef}
-        className="min-h-screen flex items-center justify-center bg-[#0d1b2a] py-16"
+        className="min-h-screen flex items-center justify-center bg-[#0d1b2a]"
       >
         <motion.div
           variants={fadeUp}
@@ -176,7 +186,7 @@ export default function App() {
           <div className="space-y-8">
             <motion.div
               className="bg-[#0E1A2B] p-6 rounded-lg"
-              variants={fadeInLeft}
+              variants={fadeleft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
@@ -196,7 +206,7 @@ export default function App() {
 
             <motion.div
               className="bg-[#0E1A2B] p-6 rounded-lg"
-              variants={fadeInRight}
+              variants={faderight}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
