@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Navbar from "./navbar";
 import Me from "./img/me.png";
 import Bg from "./img/bg.png";
+import Cv from "./cv/resume.pdf";
 
 export default function App() {
   // Refs for sections
@@ -20,12 +21,12 @@ export default function App() {
   // Variants for reusable animations
   const fadeInLeft = {
     hidden: { x: -500, opacity: 0 },
-    visible: { x: 0, opacity: 1 }
+    visible: { x: 250, opacity: 1 }
   };
 
   const fadeInRight = {
     hidden: { x: 500, opacity: 0 },
-    visible: { x: 0, opacity: 1 }
+    visible: { x: 250, opacity: 1 }
   };
 
   const fadeUp = {
@@ -44,27 +45,27 @@ export default function App() {
       {/* HOME */}
       <section
         ref={homeRef}
-        className="min-h-screen flex items-center justify-center mx-[10%] text-white overflow-hidden pt-20"
+        className="min-h-screen flex justify-between items-center  text-white overflow-hidden pt-20"
       >
-        <motion.div
-          variants={fadeInLeft}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="flex justify-center items-center w-1/2 overflow-hidden relative will-change-transform"
-          style={{
-            backgroundImage: `url(${Bg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center"
-          }}
-        >
-          <img
-            src={Me}
-            alt="me"
-            className="relative z-10 max-h-[80vh] bg-transparent"
-          />
-        </motion.div>
+          <motion.div
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="flex justify-center items-center w-1/2 relative will-change-transform"
+            style={{
+              backgroundImage: `url(${Bg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center"
+            }}
+          >
+            <img
+              src={Me}
+              alt="me"
+              className="relative z-10 max-h-[80vh] bg-transparent"
+            />
+          </motion.div>
 
         {/* Right Side - Text */}
         <motion.div
@@ -73,7 +74,7 @@ export default function App() {
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="w-1/2 pl-12 will-change-transform"
+          className="w-1/2  will-change-transform"
         >
           <h1 className="text-6xl font-bold leading-tight">
             Mark <br /> Vincent <br /> Agustin
@@ -84,12 +85,12 @@ export default function App() {
 
           {/* Download CV button as motion.a */}
           <motion.a
-            href="/cv.pdf"  // <-- place your file in public/cv.pdf
-            download="Mark-Vincent-CV.pdf"
+            href={Cv}  // <-- place your file in public/cv.pdf
+            download="resume.pdf"
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0, duration: 1.8, ease: "easeOut" }}
-            className="inline-block mt-8 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:scale-105 duration-300"
+            className="inline-block mt-5 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:scale-105 duration-300"
           >
             Download CV →
           </motion.a>
