@@ -4,6 +4,7 @@ import Navbar from "./navbar";
 import Me from "./img/me.png";
 import Bg from "./img/bg.png";
 import Cv from "./cv/resume.pdf";
+import './index.css'
 
 export default function App() {
   // Refs for sections
@@ -29,7 +30,7 @@ export default function App() {
     visible: { x: 250, opacity: 1 }
   };
 
-    const fadeleft = {
+  const fadeleft = {
     hidden: { x: -500, opacity: 0 },
     visible: { x: 0, opacity: 1 }
   };
@@ -57,25 +58,25 @@ export default function App() {
         ref={homeRef}
         className="min-h-screen flex justify-between items-center  text-white overflow-hidden pt-20"
       >
-          <motion.div
-            variants={fadeInLeft}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="flex justify-center items-center w-1/2 relative will-change-transform"
-            style={{
-              backgroundImage: `url(${Bg})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center"
-            }}
-          >
-            <img
-              src={Me}
-              alt="me"
-              className="relative z-10 max-h-[80vh] bg-transparent"
-            />
-          </motion.div>
+        <motion.div
+          variants={fadeInLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="flex justify-center items-center w-1/2 relative will-change-transform"
+          style={{
+            backgroundImage: `url(${Bg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
+        >
+          <img
+            src={Me}
+            alt="me"
+            className="relative z-10 max-h-[80vh] bg-transparent"
+          />
+        </motion.div>
 
         {/* Right Side - Text */}
         <motion.div
@@ -86,7 +87,7 @@ export default function App() {
           transition={{ duration: 0.8, ease: "easeInOut" }}
           className="w-1/2  will-change-transform"
         >
-          <h1 className="text-6xl font-bold leading-tight">
+          <h1 className="font-benguiat text-6xl font-bold leading-tight">
             Mark <br /> Vincent <br /> Agustin
           </h1>
           <p className="mt-6 text-lg text-gray-300">
@@ -118,49 +119,86 @@ export default function App() {
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto px-6"
+          className="max-w-4xl mx-auto px-6 relative"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
             Education
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* Timeline Line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-[97%] w-1 bg-gray-600"></div>
+
+          <div className="space-y-12 relative">
+            {/* Elementary */}
             <motion.div
-              className="bg-[#0E1A2B] p-6 rounded-lg"
-              variants={fadeUp}
+              className="flex justify-start items-center relative"
+              variants={fadeleft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ duration: 0.6 }}
             >
-              <h3 className="text-xl font-semibold text-yellow-400">
-                Bachelor of Science in Computer Science
-              </h3>
-              <p className="text-gray-300 mt-2">University of the Philippines</p>
-              <p className="text-gray-400 mt-1">2018 - 2022</p>
-              <p className="mt-4">
-                Graduated with honors. Specialized in web development and
-                software engineering.
-              </p>
+              <div className="w-1/2 pr-8 text-right">
+                <h3 className="text-3xl font-bold text-yellow-400">Elementary</h3>
+                <p className="text-gray-300 mt-2 font-semibold">Victoria East Central School</p>
+                <p className="text-gray-400">2006 - 2014</p>
+              </div>
+              <div className="w-6 h-6 bg-yellow-400 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
             </motion.div>
 
+            {/* High School */}
             <motion.div
-              className="bg-[#0E1A2B] p-6 rounded-lg"
-              variants={fadeUp}
+              className="flex justify-end items-center relative"
+              variants={faderight}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ duration: 0.6 }}
             >
-              <h3 className="text-xl font-semibold text-yellow-400">
-                Full Stack Web Development Bootcamp
-              </h3>
-              <p className="text-gray-300 mt-2">Code Academy</p>
-              <p className="text-gray-400 mt-1">2022</p>
-              <p className="mt-4">
-                Completed intensive 6-month program focusing on React, Node.js,
-                and modern web development.
-              </p>
+              <div className="w-6 h-6 bg-yellow-400 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
+              <div className="w-1/2 pl-8 text-left">
+                <h3 className="text-3xl font-bold text-yellow-400">High School</h3>
+                <p className="text-gray-300 mt-2 font-semibold">Our Lady of the Sacred Heart College</p>
+                <p className="text-gray-400">2014 - 2018</p>
+              </div>
+            </motion.div>
+
+            {/* Senior High School */}
+            <motion.div
+              className="flex justify-start items-center relative"
+              variants={fadeleft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="w-1/2 pr-8 text-right">
+                <h3 className="text-3xl font-bold text-yellow-400">Senior High</h3>
+                <p className="text-gray-300 mt-2 font-semibold">Our Lady of the Sacred Heart College </p>
+                <p className="text-gray-300 mt-2">Strand: Computer System Servicing</p>
+                <p className="text-gray-400">2018 - 2020</p>
+              </div>
+              <div className="w-6 h-6 bg-yellow-400 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
+            </motion.div>
+
+            {/* College */}
+            <motion.div
+              className="flex justify-end items-center relative"
+              variants={faderight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="w-6 h-6 bg-yellow-400 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
+              <div className="w-1/2 pl-8 text-left">
+                <h3 className="text-3xl font-bold text-yellow-400">College</h3>
+                <p className="text-xl text-gray-300 mt-2 font-semibold">Central Luzon State University</p>
+                <p className="text-gray-300 mt-2">
+                  Bachelor of Science in Information Technology Major in Systems Development
+                </p>
+                <p className="text-gray-400">2020 - 2025</p>
+              </div>
             </motion.div>
           </div>
         </motion.div>
@@ -193,34 +231,16 @@ export default function App() {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <h3 className="text-xl font-semibold text-yellow-400">
-                Senior Web Developer
+                IT staff
               </h3>
-              <p className="text-gray-300 mt-2">Tech Solutions Inc.</p>
-              <p className="text-gray-400 mt-1">2022 - Present</p>
+              <p className="text-gray-300 mt-2">Wesleyan University-Philippines Hospital</p>
+              <p className="text-gray-400 mt-1">September 2024 to January 2025</p>
               <ul className="mt-4 list-disc list-inside space-y-2">
-                <li>Led development of company's flagship web application</li>
-                <li>Implemented responsive designs and optimized performance</li>
-                <li>Mentored junior developers and conducted code reviews</li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              className="bg-[#0E1A2B] p-6 rounded-lg"
-              variants={faderight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              <h3 className="text-xl font-semibold text-yellow-400">
-                Frontend Developer
-              </h3>
-              <p className="text-gray-300 mt-2">Digital Creations Studio</p>
-              <p className="text-gray-400 mt-1">2020 - 2022</p>
-              <ul className="mt-4 list-disc list-inside space-y-2">
-                <li>Developed user interfaces for various client projects</li>
-                <li>Collaborated with designers to implement pixel-perfect designs</li>
-                <li>Improved website performance and SEO</li>
+                <li>Assisted in maintaining and troubleshooting the hospital’s computer systems and networks.</li>
+                <li>Resolved 95% of IT issues within the same day.</li>
+                <li>Helped set up, repair, and update hardware and software for staff use.</li>
+                <li>Supported network connections, printers, and other IT equipment to ensure smooth operations.</li>
+                <li>Worked with the IT team to respond to technical issues quickly and effectively.</li>
               </ul>
             </motion.div>
           </div>
