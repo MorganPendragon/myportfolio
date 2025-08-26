@@ -267,28 +267,28 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                title: "E-Commerce Platform",
-                tech: "React, Node.js, MongoDB",
+                title: "Vaccination Management System - Frontend",
+                tech: "PHP, MySql, Boostrap, HTML, JQuery",
                 description:
-                  "Full-featured online store with shopping cart, user authentication, and payment processing."
+                  "A Database Management System that tracks the Vaccination status of students and faculty members."
               },
               {
                 title: "Task Management App",
-                tech: "Vue.js, Firebase",
+                tech: "HTML, Boostrap, JavaScript, Supabase",
                 description:
-                  "Collaborative task management application with real-time updates and team collaboration features."
+                  "A task tracker that allows you to update, monitor, and remind about the important task."
               },
               {
-                title: "Weather Dashboard",
-                tech: "React, OpenWeather API",
+                title: "Movie Review",
+                tech: "Boostrap, Laravel, Javascript",
                 description:
-                  "Interactive weather application with 5-day forecast, location search, and responsive design."
+                  "A Database Management System that lets you review a Movie."
               },
               {
-                title: "Fitness Tracker",
-                tech: "React Native, Express.js",
+                title: "Captive Portal",
+                tech: "HTML, CSS, JavaScript",
                 description:
-                  "Mobile application for tracking workouts, nutrition, and fitness progress with data visualization."
+                  "A Wi-Fi portal that authenticate users before granting network access, acting as a gateway to control and monitor network usage."
               }
             ].map((project, index) => (
               <motion.div
