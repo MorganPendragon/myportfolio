@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./navbar";
 import Me from "./img/me.png";
 import Bg from "./img/bg.png";
 import Cv from "./cv/resume.pdf";
 import './index.css'
+
 
 export default function App() {
   // Refs for sections
@@ -14,9 +15,25 @@ export default function App() {
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
+  // State for modal
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Scroll function
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Open modal with project data
+  const openProjectModal = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  // Close modal
+  const closeProjectModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
   };
 
   // Variants for reusable animations
@@ -43,6 +60,143 @@ export default function App() {
   const fadeUp = {
     hidden: { y: 50, opacity: 0 },
     visible: { y: 0, opacity: 1 }
+  };
+
+  // Modal animation variants
+  const modalVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+      scale: 0.95
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    },
+    exit: {
+      opacity: 0,
+      y: 50,
+      scale: 0.95,
+      transition: {
+        duration: 0.2,
+        ease: "easeIn"
+      }
+    }
+  };
+
+  const overlayVariants = {
+    hidden: {
+      opacity: 0
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.3
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.2
+      }
+    }
+  };
+
+  // Project data
+  const projects = [
+    {
+      title: "Vaccination Management System - Frontend",
+      tech: "PHP, MySql, Boostrap, HTML, JQuery",
+      description: "A Database Management System that tracks the Vaccination status of students and faculty members.",
+      demoLink: "#",
+      githubLink: "#"
+    },
+    {
+      title: "Task Management App",
+      tech: "HTML, Boostrap, JavaScript, Supabase",
+      description: "A task tracker that allows you to update, monitor, and remind about the important task.",
+      demoLink: "#",
+      githubLink: "#"
+    },
+    {
+      title: "Movie Review",
+      tech: "Boostrap, Laravel, Javascript",
+      description: "A Database Management System that lets you review a Movie.",
+      demoLink: "#",
+      githubLink: "#"
+    },
+    {
+      title: "Captive Portal",
+      tech: "HTML, CSS, JavaScript",
+      description: "A Wi-Fi portal that authenticate users before granting network access, acting as a gateway to control and monitor network usage.",
+      demoLink: "#",
+      githubLink: "#"
+    }
+  ];
+
+
+  // Project Modal Component
+  const ProjectModal = ({ project, isOpen, onClose }) => {
+    return (
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-70"
+            variants={overlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <motion.div
+              className="relative bg-[#1A2C3F] rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <button
+                onClick={onClose}
+                className="absolute top-4 right-4 text-gray-400 hover:text-white"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-yellow-400 mb-2">{project.title}</h3>
+                <p className="text-gray-300 mb-4">{project.tech}</p>
+                <p className="mb-6">{project.description}</p>
+
+                <div className="flex space-x-4">
+                  <a
+                    href={project.demoLink || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-yellow-400 text-black rounded-md hover:bg-yellow-500 transition-colors"
+                  >
+                    Live Demo
+                  </a>
+                  <a
+                    href={project.githubLink || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 border border-yellow-400 text-yellow-400 rounded-md hover:bg-yellow-400 hover:text-black transition-colors"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    );
   };
 
   return (
@@ -121,7 +275,7 @@ export default function App() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto px-6 relative"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+          <h2 className="text-4xl md-text-5xl font-bold mb-12 text-center">
             Education
           </h2>
 
@@ -217,7 +371,7 @@ export default function App() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto px-6"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+          <h2 className="text-4xl md-text-5xl font-bold mb-12 text-center">
             Experience
           </h2>
 
@@ -236,7 +390,7 @@ export default function App() {
               <p className="text-gray-300 mt-2">Wesleyan University-Philippines Hospital</p>
               <p className="text-gray-400 mt-1">September 2024 to January 2025</p>
               <ul className="mt-4 list-disc list-inside space-y-2">
-                <li>Assisted in maintaining and troubleshooting the hospital’s computer systems and networks.</li>
+                <li>Assisted in maintaining and troubleshooting the hospital's computer systems and networks.</li>
                 <li>Resolved 95% of IT issues within the same day.</li>
                 <li>Helped set up, repair, and update hardware and software for staff use.</li>
                 <li>Supported network connections, printers, and other IT equipment to ensure smooth operations.</li>
@@ -260,37 +414,12 @@ export default function App() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto px-6"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+          <h2 className="text-4xl md-text-5xl font-bold mb-12 text-center">
             Projects
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Vaccination Management System - Frontend",
-                tech: "PHP, MySql, Boostrap, HTML, JQuery",
-                description:
-                  "A Database Management System that tracks the Vaccination status of students and faculty members."
-              },
-              {
-                title: "Task Management App",
-                tech: "HTML, Boostrap, JavaScript, Supabase",
-                description:
-                  "A task tracker that allows you to update, monitor, and remind about the important task."
-              },
-              {
-                title: "Movie Review",
-                tech: "Boostrap, Laravel, Javascript",
-                description:
-                  "A Database Management System that lets you review a Movie."
-              },
-              {
-                title: "Captive Portal",
-                tech: "HTML, CSS, JavaScript",
-                description:
-                  "A Wi-Fi portal that authenticate users before granting network access, acting as a gateway to control and monitor network usage."
-              }
-            ].map((project, index) => (
+            {projects.map((project, index) => (
               <motion.div
                 key={index}
                 className="bg-[#0E1A2B] p-6 rounded-lg"
@@ -305,7 +434,10 @@ export default function App() {
                 </h3>
                 <p className="text-gray-300 mt-2">{project.tech}</p>
                 <p className="mt-4">{project.description}</p>
-                <button className="mt-4 px-4 py-2 bg-yellow-400 text-black rounded-md hover:bg-yellow-500 transition-colors">
+                <button
+                  onClick={() => openProjectModal(project)}
+                  className="mt-4 px-4 py-2 bg-yellow-400 text-black rounded-md hover:bg-yellow-500 transition-colors"
+                >
                   View Project
                 </button>
               </motion.div>
@@ -313,6 +445,13 @@ export default function App() {
           </div>
         </motion.div>
       </section>
+
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={closeProjectModal}
+      />
 
       {/* CONTACT */}
       <section
@@ -327,7 +466,7 @@ export default function App() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto px-6 w-full"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+          <h2 className="text-4xl md-text-5xl font-bold mb-12 text-center">
             Contact Me
           </h2>
 
