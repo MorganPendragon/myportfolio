@@ -23,6 +23,16 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>React App</title>
+
+  <script>
+    (function() {
+      if (window.location.search.includes("utm_source")) {
+        const cleanUrl = window.location.origin + window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    })();
+  </script>
+  
 </head>
 
 <body>
