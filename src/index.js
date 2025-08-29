@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './app';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+
+// Exports for your images
 export { default as Vms1 } from "./proj/vms/1.png";
 export { default as Vms2 } from "./proj/vms/2.png";
 export { default as Vms3 } from "./proj/vms/3.png";
@@ -16,18 +19,17 @@ export { default as mr1 } from "./proj/movierev/1.png";
 export { default as mr2 } from "./proj/movierev/2.png";
 export { default as mr3 } from "./proj/movierev/3.png";
 export { default as mr4 } from "./proj/movierev/4.png";
-export { default as cp1 } from "./proj/captiveportal/1.png"
-export { default as cp2 } from "./proj/captiveportal/2.png"
-export { default as cp3 } from "./proj/captiveportal/3.png"
+export { default as cp1 } from "./proj/captiveportal/1.png";
+export { default as cp2 } from "./proj/captiveportal/2.png";
+export { default as cp3 } from "./proj/captiveportal/3.png";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter basename="/myportfolio">
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
