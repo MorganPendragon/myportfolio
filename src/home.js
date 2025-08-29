@@ -51,13 +51,13 @@ export default function App() {
 
   // Variants for reusable animations
   const fadeInLeft = {
-    hidden: { x: -500, opacity: 0 },
-    visible: { x: 250, opacity: 1 }
+    hidden: { x: -100, opacity: 0 },
+    visible: { x: 0, opacity: 1 }
   };
 
   const fadeInRight = {
-    hidden: { x: 500, opacity: 0 },
-    visible: { x: 250, opacity: 1 }
+    hidden: { x: 100, opacity: 0 },
+    visible: { x: 0, opacity: 1 }
   };
 
   const fadeleft = {
@@ -400,7 +400,7 @@ export default function App() {
             {/* Elementary */}
             <motion.div
               className="flex justify-start items-center relative"
-              variants={fadeleft}
+              variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
@@ -417,7 +417,7 @@ export default function App() {
             {/* High School */}
             <motion.div
               className="flex justify-end items-center relative"
-              variants={faderight}
+              variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
@@ -434,7 +434,7 @@ export default function App() {
             {/* Senior High School */}
             <motion.div
               className="flex justify-start items-center relative"
-              variants={fadeleft}
+              variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
@@ -452,7 +452,7 @@ export default function App() {
             {/* College */}
             <motion.div
               className="flex justify-end items-center relative"
-              variants={faderight}
+              variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
@@ -492,7 +492,7 @@ export default function App() {
           <div className="space-y-8">
             <motion.div
               className="bg-[#0E1A2B] p-6 rounded-lg"
-              variants={fadeleft}
+              variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
