@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.e01ee8e8.css",
-    "main.js": "/react-gh-pages/static/js/main.9598eb7d.js",
-    "static/js/453.db3b75e3.chunk.js": "/react-gh-pages/static/js/453.db3b75e3.chunk.js",
-    "static/media/me.png": "/react-gh-pages/static/media/me.df1062191c90d7845bab.png",
-    "static/media/3.png": "/react-gh-pages/static/media/3.e965836bf0f014c75282.png",
-    "static/media/2.png": "/react-gh-pages/static/media/2.6d469688f25b9870354d.png",
-    "static/media/4.png": "/react-gh-pages/static/media/4.81647f398f9a6a7f6f52.png",
-    "static/media/1.png": "/react-gh-pages/static/media/1.c2aad81b49ee27a5eb49.png",
-    "static/media/resume.pdf": "/react-gh-pages/static/media/resume.62dca9c12d62fe0a3e2c.pdf",
-    "static/media/5.png": "/react-gh-pages/static/media/5.82bfb28624e9b9d94aea.png",
-    "static/media/bg.png": "/react-gh-pages/static/media/bg.2f39bfbf0f58d4788c96.png",
-    "static/media/Benguiat Bold.ttf": "/react-gh-pages/static/media/Benguiat Bold.d199c4e4f398467d7664.ttf",
-    "index.html": "/react-gh-pages/index.html",
-    "main.e01ee8e8.css.map": "/react-gh-pages/static/css/main.e01ee8e8.css.map",
-    "main.9598eb7d.js.map": "/react-gh-pages/static/js/main.9598eb7d.js.map",
-    "453.db3b75e3.chunk.js.map": "/react-gh-pages/static/js/453.db3b75e3.chunk.js.map"
+    "main.css": "/myportfolio/static/css/main.f71b7d16.css",
+    "main.js": "/myportfolio/static/js/main.782f9cd3.js",
+    "static/js/453.db3b75e3.chunk.js": "/myportfolio/static/js/453.db3b75e3.chunk.js",
+    "static/media/me.png": "/myportfolio/static/media/me.df1062191c90d7845bab.png",
+    "static/media/3.png": "/myportfolio/static/media/3.e965836bf0f014c75282.png",
+    "static/media/2.png": "/myportfolio/static/media/2.6d469688f25b9870354d.png",
+    "static/media/4.png": "/myportfolio/static/media/4.81647f398f9a6a7f6f52.png",
+    "static/media/1.png": "/myportfolio/static/media/1.c2aad81b49ee27a5eb49.png",
+    "static/media/resume.pdf": "/myportfolio/static/media/resume.62dca9c12d62fe0a3e2c.pdf",
+    "static/media/5.png": "/myportfolio/static/media/5.82bfb28624e9b9d94aea.png",
+    "static/media/bg.png": "/myportfolio/static/media/bg.2f39bfbf0f58d4788c96.png",
+    "static/media/Benguiat Bold.ttf": "/myportfolio/static/media/Benguiat Bold.d199c4e4f398467d7664.ttf",
+    "index.html": "/myportfolio/index.html",
+    "main.f71b7d16.css.map": "/myportfolio/static/css/main.f71b7d16.css.map",
+    "main.782f9cd3.js.map": "/myportfolio/static/js/main.782f9cd3.js.map",
+    "453.db3b75e3.chunk.js.map": "/myportfolio/static/js/453.db3b75e3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e01ee8e8.css",
-    "static/js/main.9598eb7d.js"
+    "static/css/main.f71b7d16.css",
+    "static/js/main.782f9cd3.js"
   ]
 }
