@@ -4,10 +4,20 @@ import Navbar from "./navbar";
 import Me from "./img/me.png";
 import Bg from "./img/bg.png";
 import Cv from "./cv/resume.pdf";
-import './index.css'
-
+import './index.css';
+import './index.js';
+import { Vms1, Vms2, Vms3, Vms4, Vms5 } from "./index.js";
+import { tmg1, tmg2, tmg3, tmg4 } from "./index.js";
+import { mr1, mr2, mr3, mr4 } from "./index.js";
+import { cp1, cp2, cp3 } from "./index.js";
 
 export default function App() {
+
+  const VmsImages = [Vms1, Vms2, Vms3, Vms4, Vms5];
+  const tmg = [tmg1, tmg2, tmg3, tmg4];
+  const mr = [mr1, mr2, mr3, mr4];
+  const cp = [cp1, cp2, cp3];
+
   // Refs for sections
   const homeRef = useRef(null);
   const educationRef = useRef(null);
@@ -107,41 +117,87 @@ export default function App() {
     }
   };
 
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 150 : -150,
+      opacity: 0,
+      scale: 0.95,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0, ease: "easeOut" },
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 150 : -150,
+      opacity: 0,
+      scale: 0.95,
+      transition: { duration: 0, ease: "easeIn" },
+    }),
+  };
+
   // Project data
+  // 🔹 Projects Array (replace your current one)
   const projects = [
     {
       title: "Vaccination Management System - Frontend",
       tech: "PHP, MySql, Boostrap, HTML, JQuery",
-      description: "A Database Management System that tracks the Vaccination status of students and faculty members.",
+      description:
+        "A Database Management System that tracks the Vaccination status of students and faculty members.",
+      images: VmsImages,
       demoLink: "#",
       githubLink: "#"
     },
     {
       title: "Task Management App",
       tech: "HTML, Boostrap, JavaScript, Supabase",
-      description: "A task tracker that allows you to update, monitor, and remind about the important task.",
+      description:
+        "A task tracker that allows you to update, monitor, and remind about the important task.",
+      images: tmg,
       demoLink: "#",
       githubLink: "#"
     },
     {
       title: "Movie Review",
-      tech: "Boostrap, Laravel, Javascript",
+      tech: "Boostrap, Laravel, Javascript, MySQL",
       description: "A Database Management System that lets you review a Movie.",
+      images: mr,
       demoLink: "#",
       githubLink: "#"
     },
     {
       title: "Captive Portal",
       tech: "HTML, CSS, JavaScript",
-      description: "A Wi-Fi portal that authenticate users before granting network access, acting as a gateway to control and monitor network usage.",
+      description:
+        "A Wi-Fi portal that authenticate users before granting network access, acting as a gateway to control and monitor network usage.",
+      images: cp,
       demoLink: "#",
       githubLink: "#"
     }
   ];
 
 
+
   // Project Modal Component
   const ProjectModal = ({ project, isOpen, onClose }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [direction, setDirection] = useState(0);
+
+    if (!project) return null;
+
+    const nextSlide = () => {
+      setCurrentIndex((prev) =>
+        prev === project.images.length - 1 ? 0 : prev + 1
+      );
+    };
+
+    const prevSlide = () => {
+      setCurrentIndex((prev) =>
+        prev === 0 ? project.images.length - 1 : prev - 1
+      );
+    };
+
     return (
       <AnimatePresence>
         {isOpen && (
@@ -159,23 +215,78 @@ export default function App() {
               animate="visible"
               exit="exit"
             >
+              {/* Close button */}
               <button
                 onClick={onClose}
                 className="absolute top-4 right-4 text-gray-400 hover:text-white"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
+                ✖
               </button>
 
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-yellow-400 mb-2">{project.title}</h3>
+                <h3 className="text-2xl font-bold text-yellow-400 mb-2">
+                  {project.title}
+                </h3>
                 <p className="text-gray-300 mb-4">{project.tech}</p>
                 <p className="mb-6">{project.description}</p>
 
-                <div className="flex space-x-4">
+                {/* Carousel */}
+                {project.images && project.images.length > 0 && (
+                  <div className="relative w-full h-64 flex items-center justify-center">
+                    <motion.img
+                      key={currentIndex}
+                      src={project.images[currentIndex]}
+                      alt={project.title}
+                      className="w-full h-64 object-contain rounded-lg shadow-lg"
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                    />
+
+                    {/* Prev button */}
+                    <button
+                      onClick={prevSlide}
+                      className="absolute left-2 bg-black/50 text-white px-3 py-2 rounded-full hover:bg-black"
+                    >
+                      <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4" />
+                      </svg>
+
+
+                    </button>
+
+                    {/* Next button */}
+                    <button
+                      onClick={nextSlide}
+                      className="absolute right-2 bg-black/50 text-white px-3 py-2 rounded-full hover:bg-black"
+                    >
+                      <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+                      </svg>
+
+                    </button>
+                  </div>
+                )}
+
+                {/* Dots indicator */}
+                {project.images && project.images.length > 1 && (
+                  <div className="flex justify-center mt-3 space-x-2">
+                    {project.images.map((_, idx) => (
+                      <div
+                        key={idx}
+                        className={`w-3 h-3 rounded-full ${idx === currentIndex ? "bg-yellow-400" : "bg-gray-500"
+                          }`}
+                      ></div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Links */}
+                <div className="flex space-x-4 mt-6">
                   <a
-                    href={project.demoLink || "#"}
+                    href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 bg-yellow-400 text-black rounded-md hover:bg-yellow-500 transition-colors"
@@ -183,7 +294,7 @@ export default function App() {
                     Live Demo
                   </a>
                   <a
-                    href={project.githubLink || "#"}
+                    href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 border border-yellow-400 text-yellow-400 rounded-md hover:bg-yellow-400 hover:text-black transition-colors"
@@ -198,6 +309,7 @@ export default function App() {
       </AnimatePresence>
     );
   };
+
 
   return (
     <div className="bg-[#0E1A2B] text-white">
