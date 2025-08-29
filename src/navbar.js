@@ -32,7 +32,7 @@ export default function Navbar({ scrollToSection, refs }) {
           onClick={() => scrollToSection(refs.contactRef)}
           className="cursor-pointer hover:text-yellow-400 transition"
         >
-          Contact
+          Connect
         </li>
       </ul>
     </nav>
