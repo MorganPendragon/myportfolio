@@ -148,8 +148,6 @@ export default function App() {
       description:
         "A Database Management System that tracks the Vaccination status of students and faculty members.",
       images: VmsImages,
-      demoLink: "#",
-      githubLink: "#"
     },
     {
       title: "Task Management App",
@@ -157,16 +155,12 @@ export default function App() {
       description:
         "A task tracker that allows you to update, monitor, and remind about the important task.",
       images: tmg,
-      demoLink: "#",
-      githubLink: "#"
     },
     {
       title: "Movie Review",
       tech: "Boostrap, Laravel, Javascript, MySQL",
       description: "A Database Management System that lets you review a Movie.",
       images: mr,
-      demoLink: "#",
-      githubLink: "#"
     },
     {
       title: "Captive Portal",
@@ -174,8 +168,6 @@ export default function App() {
       description:
         "A Wi-Fi portal that authenticate users before granting network access, acting as a gateway to control and monitor network usage.",
       images: cp,
-      demoLink: "#",
-      githubLink: "#"
     }
   ];
 
