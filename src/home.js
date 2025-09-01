@@ -276,26 +276,6 @@ export default function App() {
                     ))}
                   </div>
                 )}
-
-                {/* Links */}
-                <div className="flex space-x-4 mt-6">
-                  <a
-                    href={project.demoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-yellow-400 text-black rounded-md hover:bg-yellow-500 transition-colors"
-                  >
-                    Live Demo
-                  </a>
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 border border-yellow-400 text-yellow-400 rounded-md hover:bg-yellow-400 hover:text-black transition-colors"
-                  >
-                    GitHub
-                  </a>
-                </div>
               </div>
             </motion.div>
           </motion.div>
